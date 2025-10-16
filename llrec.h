@@ -84,6 +84,22 @@ Node* llfilter(Node* head, Comp pred)
     // Provide your implementation below
     //*********************************************
 
+		//This is my base case
+		if (head==nullptr){ //I am checking if head is null
+			return nullptr; //If yes, we return
+		}
+
+	
+		Node * temp=head; //Creating a temporary head 
+
+		if (pred(head->val)){ //This checks if the head matches the function's conditions (bool is true)
+				delete temp; //I will delete if it matches the pre-requirement
+				head=llfilter(head->next, pred); //Sets our new head to the pointer of the remaining list, while recursing
+		}
+		
+		else{
+				head->next=llfilter(head->next, pred); //We keep the old head value and recurse for the next value
+		}
 
 }
 
